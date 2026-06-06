@@ -41,11 +41,11 @@ except:
     print("Model not loaded")
 
 try:
-    avg_duration = joblib.load("duration.pkl")
-    print("Duration data loaded")
+    duration_model = joblib.load("duration_model.pkl")
+    print("Duration model loaded")
 except:
-    avg_duration = {}
-    print("Duration data not loaded")
+    duration_model = None
+    print("Duration model not loaded")
 # =====================================
 # Locations
 # =====================================
@@ -269,11 +269,28 @@ def predict_slot(slot_id, time_minutes, day):
     # Use probability to simulate realistic slot-by-slot distribution
     prob_available = model.predict_proba(df)[0][1]
     return 1 if random.random() < prob_available else 0
-def estimate_time(slot_id):
-    # Map tid (0, 1, 2, 3) to the actual categorical keys present in duration.pkl
+def estimate_time(slot_id, time_minutes, day):
+    # Map tid (0, 1, 2, 3) to the actual categorical keys
     key_map = {0: 13, 1: 30, 2: 33, 3: 35}
     actual_key = key_map.get(slot_id, slot_id)
-    duration = avg_duration.get(actual_key, 60)
+    
+    if duration_model is None:
+        duration = 60
+    else:
+        is_weekend = 1 if day >= 5 else 0
+        df = pd.DataFrame({
+            "Time_Minutes": [time_minutes],
+            "Day": [day],
+            "Slot_ID": [actual_key],
+            "Is_Weekend": [is_weekend]
+        })
+        duration = duration_model.predict(df)[0]
+        
+        # Add natural variance: The ML model predicts the *mean* expected duration.
+        # In reality, parking times are distributed around this mean.
+        # We add a random spread (e.g., -15 to +30 minutes) so not all slots show the exact same minute.
+        variance = random.randint(-15, 30)
+        duration = max(1, duration + variance)
     
     return (
         datetime.now() + timedelta(minutes=int(duration))
@@ -302,7 +319,7 @@ def aggregate(location, time_features):
             available += is_avail
             
             if is_avail == 0:
-                est_time_slot = estimate_time(tid)
+                est_time_slot = estimate_time(tid, tm, time_features["day"])
                 slots_data.append(SlotData(status="occupied", nextAvailable=est_time_slot))
             else:
                 slots_data.append(SlotData(status="available", nextAvailable=None))
@@ -321,7 +338,7 @@ def aggregate(location, time_features):
     else:
         status = "Full"
 
-    est_time = estimate_time(0)
+    est_time = estimate_time(0, time_features["time_minutes"], time_features["day"])
     return available, occupied, percent, status, est_time, slots_data
 
 # =====================================

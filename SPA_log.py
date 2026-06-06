@@ -4,7 +4,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import accuracy_score, confusion_matrix, ConfusionMatrixDisplay
+from sklearn.metrics import accuracy_score, confusion_matrix, ConfusionMatrixDisplay, mean_absolute_error
+from sklearn.ensemble import RandomForestRegressor
 from datetime import datetime, timedelta
 import joblib
 
@@ -48,9 +49,25 @@ df['Next_Time'] = df.groupby('Slot_ID')['created_at'].shift(-1)
 df['Duration'] = (df['Next_Time'] - df['created_at']).dt.total_seconds() / 60
 
 df_reg = df[df['Availability'] == 0]
-df_reg = df_reg[(df_reg['Duration'] > 1) & (df_reg['Duration'] < 180)]
+df_reg = df_reg[(df_reg['Duration'] > 1) & (df_reg['Duration'] < 180)].copy()
 
-avg_duration = df_reg.groupby('Slot_ID')['Duration'].mean()
+# Drop rows with NaN in features or target
+df_reg.dropna(subset=['Time_Minutes', 'Day', 'Slot_ID', 'Is_Weekend', 'Duration'], inplace=True)
+
+# Train Regression Model for Duration
+X_dur = df_reg[['Time_Minutes', 'Day', 'Slot_ID', 'Is_Weekend']]
+y_dur = df_reg['Duration']
+
+X_dur_train, X_dur_test, y_dur_train, y_dur_test = train_test_split(
+    X_dur, y_dur, test_size=0.2, random_state=42
+)
+
+duration_model = RandomForestRegressor(n_estimators=100, random_state=42)
+duration_model.fit(X_dur_train, y_dur_train)
+
+y_dur_pred = duration_model.predict(X_dur_test)
+mae = mean_absolute_error(y_dur_test, y_dur_pred)
+print(f"Duration Model MAE: {mae:.2f} minutes")
 
 # Prediction Function
 def predict_parking(time_minutes, day, slot_id, prev_status=0, is_weekend=0, rolling=0):
@@ -68,7 +85,14 @@ def predict_parking(time_minutes, day, slot_id, prev_status=0, is_weekend=0, rol
     if pred == 1:
         return "Slot is Available Now"
 
-    duration = avg_duration.get(slot_id, 60)
+    # Predict duration using ML Model
+    dur_inp = pd.DataFrame({
+        'Time_Minutes': [time_minutes],
+        'Day': [day],
+        'Slot_ID': [slot_id],
+        'Is_Weekend': [is_weekend]
+    })
+    duration = duration_model.predict(dur_inp)[0]
     available_time = datetime.now() + timedelta(minutes=int(duration))
 
     return (
@@ -88,7 +112,7 @@ print(result)
 
 # Save Model
 joblib.dump(model, "availability_model.pkl")
-joblib.dump(avg_duration.to_dict(), "duration.pkl")
+joblib.dump(duration_model, "duration_model.pkl")
 print("Model saved successfully")
 
 # Plot Confusion Matrix
