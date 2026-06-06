@@ -18,7 +18,7 @@ const parkingData = {
         slots: Array.from({ length: 320 }, (_, i) => ({
           id: `A${Math.floor(i / 20) + 1}-${(i % 20) + 1}`,
           status: i < 145 ? 'available' : 'occupied',
-          nextAvailable: i >= 145 ? new Date(Date.now() + Math.random() * 7200000).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }) : null
+          nextAvailable: i >= 145 ? null : null
         }))
       },
       {
@@ -34,7 +34,7 @@ const parkingData = {
         slots: Array.from({ length: 950 }, (_, i) => ({
           id: `B${Math.floor(i / 40) + 1}-${(i % 40) + 1}`,
           status: i < 120 ? 'available' : 'occupied',
-          nextAvailable: i >= 120 ? new Date(Date.now() + Math.random() * 7200000).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }) : null
+          nextAvailable: i >= 120 ? null : null
         }))
       },
       {
@@ -50,7 +50,7 @@ const parkingData = {
         slots: Array.from({ length: 120 }, (_, i) => ({
           id: `C${Math.floor(i / 15) + 1}-${(i % 15) + 1}`,
           status: i < 78 ? 'available' : 'occupied',
-          nextAvailable: i >= 78 ? new Date(Date.now() + Math.random() * 7200000).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }) : null
+          nextAvailable: i >= 78 ? null : null
         }))
       }
     ],
@@ -68,7 +68,7 @@ const parkingData = {
         slots: Array.from({ length: 290 }, (_, i) => ({
           id: `D${Math.floor(i / 20) + 1}-${(i % 20) + 1}`,
           status: i < 198 ? 'available' : 'occupied',
-          nextAvailable: i >= 198 ? new Date(Date.now() + Math.random() * 7200000).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }) : null
+          nextAvailable: i >= 198 ? null : null
         }))
       },
       {
@@ -84,7 +84,7 @@ const parkingData = {
         slots: Array.from({ length: 180 }, (_, i) => ({
           id: `E${Math.floor(i / 18) + 1}-${(i % 18) + 1}`,
           status: i < 54 ? 'available' : 'occupied',
-          nextAvailable: i >= 54 ? new Date(Date.now() + Math.random() * 7200000).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }) : null
+          nextAvailable: i >= 54 ? null : null
         }))
       }
     ],
@@ -102,7 +102,7 @@ const parkingData = {
         slots: Array.from({ length: 200 }, (_, i) => ({
           id: `F${Math.floor(i / 20) + 1}-${(i % 20) + 1}`,
           status: i < 134 ? 'available' : 'occupied',
-          nextAvailable: i >= 134 ? new Date(Date.now() + Math.random() * 7200000).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }) : null
+          nextAvailable: i >= 134 ? null : null
         }))
       },
       {
@@ -118,7 +118,7 @@ const parkingData = {
         slots: Array.from({ length: 95 }, (_, i) => ({
           id: `G${Math.floor(i / 12) + 1}-${(i % 12) + 1}`,
           status: i < 12 ? 'available' : 'occupied',
-          nextAvailable: i >= 12 ? new Date(Date.now() + Math.random() * 7200000).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }) : null
+          nextAvailable: i >= 12 ? null : null
         }))
       }
     ]
@@ -138,7 +138,7 @@ const parkingData = {
         slots: Array.from({ length: 280 }, (_, i) => ({
           id: `H${Math.floor(i / 20) + 1}-${(i % 20) + 1}`,
           status: i < 156 ? 'available' : 'occupied',
-          nextAvailable: i >= 156 ? new Date(Date.now() + Math.random() * 7200000).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }) : null
+          nextAvailable: i >= 156 ? null : null
         }))
       },
       {
@@ -154,7 +154,7 @@ const parkingData = {
         slots: Array.from({ length: 1100 }, (_, i) => ({
           id: `I${Math.floor(i / 50) + 1}-${(i % 50) + 1}`,
           status: i < 89 ? 'available' : 'occupied',
-          nextAvailable: i >= 89 ? new Date(Date.now() + Math.random() * 7200000).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }) : null
+          nextAvailable: i >= 89 ? null : null
         }))
       },
       {
@@ -170,7 +170,7 @@ const parkingData = {
         slots: Array.from({ length: 520 }, (_, i) => ({
           id: `J${Math.floor(i / 30) + 1}-${(i % 30) + 1}`,
           status: i < 287 ? 'available' : 'occupied',
-          nextAvailable: i >= 287 ? new Date(Date.now() + Math.random() * 7200000).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }) : null
+          nextAvailable: i >= 287 ? null : null
         }))
       }
     ],
@@ -188,7 +188,7 @@ const parkingData = {
         slots: Array.from({ length: 240 }, (_, i) => ({
           id: `K${Math.floor(i / 24) + 1}-${(i % 24) + 1}`,
           status: i < 167 ? 'available' : 'occupied',
-          nextAvailable: i >= 167 ? new Date(Date.now() + Math.random() * 7200000).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }) : null
+          nextAvailable: i >= 167 ? null : null
         }))
       },
       {
@@ -204,7 +204,7 @@ const parkingData = {
         slots: Array.from({ length: 175 }, (_, i) => ({
           id: `L${Math.floor(i / 18) + 1}-${(i % 18) + 1}`,
           status: i < 98 ? 'available' : 'occupied',
-          nextAvailable: i >= 98 ? new Date(Date.now() + Math.random() * 7200000).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }) : null
+          nextAvailable: i >= 98 ? null : null
         }))
       }
     ]
@@ -224,7 +224,7 @@ const parkingData = {
         slots: Array.from({ length: 250 }, (_, i) => ({
           id: `M${Math.floor(i / 20) + 1}-${(i % 20) + 1}`,
           status: i < 167 ? 'available' : 'occupied',
-          nextAvailable: i >= 167 ? new Date(Date.now() + Math.random() * 7200000).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }) : null
+          nextAvailable: i >= 167 ? null : null
         }))
       },
       {
@@ -240,7 +240,7 @@ const parkingData = {
         slots: Array.from({ length: 800 }, (_, i) => ({
           id: `N${Math.floor(i / 40) + 1}-${(i % 40) + 1}`,
           status: i < 98 ? 'available' : 'occupied',
-          nextAvailable: i >= 98 ? new Date(Date.now() + Math.random() * 7200000).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }) : null
+          nextAvailable: i >= 98 ? null : null
         }))
       },
       {
@@ -256,7 +256,7 @@ const parkingData = {
         slots: Array.from({ length: 150 }, (_, i) => ({
           id: `O${Math.floor(i / 15) + 1}-${(i % 15) + 1}`,
           status: i < 89 ? 'available' : 'occupied',
-          nextAvailable: i >= 89 ? new Date(Date.now() + Math.random() * 7200000).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }) : null
+          nextAvailable: i >= 89 ? null : null
         }))
       }
     ],
@@ -274,7 +274,7 @@ const parkingData = {
         slots: Array.from({ length: 680 }, (_, i) => ({
           id: `P${Math.floor(i / 35) + 1}-${(i % 35) + 1}`,
           status: i < 89 ? 'available' : 'occupied',
-          nextAvailable: i >= 89 ? new Date(Date.now() + Math.random() * 7200000).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }) : null
+          nextAvailable: i >= 89 ? null : null
         }))
       },
       {
@@ -290,7 +290,7 @@ const parkingData = {
         slots: Array.from({ length: 410 }, (_, i) => ({
           id: `Q${Math.floor(i / 25) + 1}-${(i % 25) + 1}`,
           status: i < 267 ? 'available' : 'occupied',
-          nextAvailable: i >= 267 ? new Date(Date.now() + Math.random() * 7200000).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }) : null
+          nextAvailable: i >= 267 ? null : null
         }))
       }
     ]
@@ -310,7 +310,7 @@ const parkingData = {
         slots: Array.from({ length: 265 }, (_, i) => ({
           id: `R${Math.floor(i / 20) + 1}-${(i % 20) + 1}`,
           status: i < 178 ? 'available' : 'occupied',
-          nextAvailable: i >= 178 ? new Date(Date.now() + Math.random() * 7200000).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }) : null
+          nextAvailable: i >= 178 ? null : null
         }))
       },
       {
@@ -326,7 +326,7 @@ const parkingData = {
         slots: Array.from({ length: 220 }, (_, i) => ({
           id: `S${Math.floor(i / 20) + 1}-${(i % 20) + 1}`,
           status: i < 67 ? 'available' : 'occupied',
-          nextAvailable: i >= 67 ? new Date(Date.now() + Math.random() * 7200000).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }) : null
+          nextAvailable: i >= 67 ? null : null
         }))
       },
       {
@@ -342,7 +342,7 @@ const parkingData = {
         slots: Array.from({ length: 180 }, (_, i) => ({
           id: `T${Math.floor(i / 18) + 1}-${(i % 18) + 1}`,
           status: i < 123 ? 'available' : 'occupied',
-          nextAvailable: i >= 123 ? new Date(Date.now() + Math.random() * 7200000).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }) : null
+          nextAvailable: i >= 123 ? null : null
         }))
       }
     ],
@@ -360,7 +360,7 @@ const parkingData = {
         slots: Array.from({ length: 195 }, (_, i) => ({
           id: `U${Math.floor(i / 18) + 1}-${(i % 18) + 1}`,
           status: i < 127 ? 'available' : 'occupied',
-          nextAvailable: i >= 127 ? new Date(Date.now() + Math.random() * 7200000).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }) : null
+          nextAvailable: i >= 127 ? null : null
         }))
       },
       {
@@ -376,7 +376,7 @@ const parkingData = {
         slots: Array.from({ length: 340 }, (_, i) => ({
           id: `V${Math.floor(i / 22) + 1}-${(i % 22) + 1}`,
           status: i < 45 ? 'available' : 'occupied',
-          nextAvailable: i >= 45 ? new Date(Date.now() + Math.random() * 7200000).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }) : null
+          nextAvailable: i >= 45 ? null : null
         }))
       }
     ]
@@ -396,7 +396,7 @@ const parkingData = {
         slots: Array.from({ length: 310 }, (_, i) => ({
           id: `W${Math.floor(i / 20) + 1}-${(i % 20) + 1}`,
           status: i < 234 ? 'available' : 'occupied',
-          nextAvailable: i >= 234 ? new Date(Date.now() + Math.random() * 7200000).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }) : null
+          nextAvailable: i >= 234 ? null : null
         }))
       },
       {
@@ -412,7 +412,7 @@ const parkingData = {
         slots: Array.from({ length: 850 }, (_, i) => ({
           id: `X${Math.floor(i / 40) + 1}-${(i % 40) + 1}`,
           status: i < 256 ? 'available' : 'occupied',
-          nextAvailable: i >= 256 ? new Date(Date.now() + Math.random() * 7200000).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }) : null
+          nextAvailable: i >= 256 ? null : null
         }))
       },
       {
@@ -428,7 +428,7 @@ const parkingData = {
         slots: Array.from({ length: 640 }, (_, i) => ({
           id: `Y${Math.floor(i / 35) + 1}-${(i % 35) + 1}`,
           status: i < 23 ? 'available' : 'occupied',
-          nextAvailable: i >= 23 ? new Date(Date.now() + Math.random() * 7200000).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }) : null
+          nextAvailable: i >= 23 ? null : null
         }))
       }
     ],
@@ -446,7 +446,7 @@ const parkingData = {
         slots: Array.from({ length: 130 }, (_, i) => ({
           id: `Z${Math.floor(i / 14) + 1}-${(i % 14) + 1}`,
           status: i < 87 ? 'available' : 'occupied',
-          nextAvailable: i >= 87 ? new Date(Date.now() + Math.random() * 7200000).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }) : null
+          nextAvailable: i >= 87 ? null : null
         }))
       },
       {
@@ -462,7 +462,7 @@ const parkingData = {
         slots: Array.from({ length: 110 }, (_, i) => ({
           id: `AA${Math.floor(i / 12) + 1}-${(i % 12) + 1}`,
           status: i < 56 ? 'available' : 'occupied',
-          nextAvailable: i >= 56 ? new Date(Date.now() + Math.random() * 7200000).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }) : null
+          nextAvailable: i >= 56 ? null : null
         }))
       }
     ]
@@ -705,8 +705,37 @@ const MapView = ({ setCurrentPage, setSelectedPlace, setNavigationHistory, navig
     }
   };
 
-  const viewPlaceDetails = (place) => {
-    setSelectedPlace({ ...place, state: selectedState, city: selectedCity });
+  const viewPlaceDetails = async (place) => {
+    let updatedPlace = { ...place, state: selectedState, city: selectedCity };
+    try {
+      const response = await fetch('http://localhost:8001/predict', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ location_name: place.name })
+      });
+      if (response.ok) {
+        const data = await response.json();
+        updatedPlace = {
+          ...updatedPlace,
+          availableSlots: data.available_slots,
+          occupiedSlots: data.occupied_slots,
+          percentage: data.availability_percentage,
+          status: data.status,
+          estimated_time: data.estimated_time,
+          totalSlots: data.total_slots,
+          slots: data.slots.map((s, i) => ({
+            id: `A${Math.floor(i / 20) + 1}-${(i % 20) + 1}`,
+            status: s.status,
+            nextAvailable: s.nextAvailable
+          }))
+        };
+      }
+    } catch (error) {
+      console.error('Error fetching prediction:', error);
+    }
+    setSelectedPlace(updatedPlace);
     setCurrentPage('location-details');
     setNavigationHistory([...navigationHistory, 'location-details']);
   };
@@ -967,30 +996,6 @@ const LocationDetails = ({ place }) => {
           </div>
         </div>
 
-        {/* Next Availability Section */}
-        {(place.status === 'Limited' || place.status === 'Full') && nextAvailableSlots.length > 0 && (
-          <div className="bg-white/80 backdrop-blur-lg rounded-3xl p-8 mb-8 shadow-2xl border-2 border-orange-300">
-            <div className="flex items-center gap-3 mb-3">
-              <Clock className="w-7 h-7 text-orange-600" />
-              <h2 className="text-3xl font-black text-gray-800">Predicted Next Available Slots</h2>
-            </div>
-            <p className="text-sm text-gray-600 mb-6 font-medium">
-              These times are <strong>estimates</strong> and may change
-            </p>
-            <div className="grid md:grid-cols-6 gap-4">
-              {nextAvailableSlots.map((slot, index) => (
-                <div key={index} className="bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl p-5 border-2 border-orange-300 hover:border-orange-500 transition-all transform hover:scale-110">
-                  <p className="text-gray-800 font-black mb-2 text-lg">{slot.id}</p>
-                  <div className="flex items-center gap-2 text-orange-600 text-sm font-bold">
-                    <Clock className="w-4 h-4" />
-                    <span>{slot.nextAvailable}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
         {/* Slot-Wise Availability */}
         <div className="bg-white/80 backdrop-blur-lg rounded-3xl p-8 shadow-2xl border-2 border-purple-300">
           <h2 className="text-3xl font-black text-gray-800 mb-6">Slot-Wise Availability</h2>
@@ -1037,13 +1042,13 @@ const LocationDetails = ({ place }) => {
           className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-6"
           onClick={closeModal}
         >
-          <div 
-            className="bg-white rounded-3xl p-8 max-w-md w-full shadow-2xl border-4 border-purple-400 transform scale-100 animate-modalAppear"
+          <div
+            className="bg-white rounded-3xl p-6 max-w-md w-full shadow-2xl border-4 border-purple-400 transform scale-100 animate-modalAppear"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}
-            <div className="flex items-center justify-between mb-6">
-              <h3 className="text-3xl font-black text-gray-800">Slot Details</h3>
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-2xl font-black text-gray-800">Slot Details</h3>
               <button
                 onClick={closeModal}
                 className="w-10 h-10 rounded-full bg-gray-100 hover:bg-red-100 flex items-center justify-center transition-all transform hover:scale-110 hover:rotate-90"
@@ -1053,17 +1058,17 @@ const LocationDetails = ({ place }) => {
             </div>
 
             {/* Slot ID */}
-            <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-6 mb-6 border-2 border-purple-300">
-              <p className="text-sm text-gray-600 font-bold mb-2">Slot Number</p>
-              <p className="text-5xl font-black bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+            <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-4 mb-4 border-2 border-purple-300">
+              <p className="text-xs text-gray-600 font-bold mb-1">Slot Number</p>
+              <p className="text-3xl font-black bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
                 {selectedSlot.id}
               </p>
             </div>
 
             {/* Status */}
-            <div className="mb-6">
-              <p className="text-sm text-gray-600 font-bold mb-3">Current Status</p>
-              <div className={`flex items-center gap-3 p-4 rounded-2xl border-2 ${
+            <div className="mb-4">
+              <p className="text-xs text-gray-600 font-bold mb-2">Current Status</p>
+              <div className={`flex items-center gap-3 p-3 rounded-2xl border-2 ${
                 selectedSlot.status === 'available'
                   ? 'bg-green-50 border-green-300'
                   : 'bg-red-50 border-red-300'
@@ -1087,30 +1092,33 @@ const LocationDetails = ({ place }) => {
                 )}
               </div>
             </div>
-
             {/* Predicted Time - Next Available */}
-            {selectedSlot.status === 'occupied' && selectedSlot.nextAvailable && (
-              <div className="bg-gradient-to-br from-orange-50 to-yellow-50 rounded-2xl p-6 border-2 border-orange-300 mb-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-yellow-500 rounded-xl flex items-center justify-center shadow-lg">
-                    <Clock className="w-7 h-7 text-white" />
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-600 font-bold">Predicted Time</p>
-                    <p className="text-xs text-gray-500 font-medium">Subject to change</p>
-                  </div>
-                </div>
-                <div className="bg-white rounded-xl p-4 border border-orange-200">
-                  <p className="text-sm text-gray-600 font-bold mb-2">Likely to be free at:</p>
-                  <p className="text-3xl font-black text-orange-600">{selectedSlot.nextAvailable}</p>
-                </div>
-              </div>
-            )}
+{selectedSlot.status === 'occupied' && (
+  <div className="bg-gradient-to-br from-orange-50 to-yellow-50 rounded-2xl p-4 border-2 border-orange-300 mb-4">
+    <div className="flex items-center gap-2 mb-3">
+      <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-yellow-500 rounded-xl flex items-center justify-center shadow-lg">
+        <Clock className="w-7 h-7 text-white" />
+      </div>
+      <div>
+        <p className="text-sm text-gray-600 font-bold">Predicted Time</p>
+        <p className="text-xs text-gray-500 font-medium">Subject to change</p>
+      </div>
+    </div>
 
+    <div className="bg-white rounded-xl p-3 border border-orange-200">
+      <p className="text-xs text-gray-600 font-bold mb-1">
+        Likely to be free at:
+      </p>
+      <p className="text-xl font-black text-orange-600">
+        {selectedSlot?.nextAvailable || place?.estimated_time || "Predicting..."}
+      </p>
+    </div>
+  </div>
+)}
             {/* Predictive Disclaimer */}
-            <div className="bg-blue-50 border-2 border-blue-300 rounded-2xl p-4">
-              <div className="flex items-start gap-3">
-                <div className="w-6 h-6 bg-blue-400 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+            <div className="bg-blue-50 border-2 border-blue-300 rounded-2xl p-3">
+              <div className="flex items-start gap-2">
+                <div className="w-5 h-5 bg-blue-400 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                   <span className="text-white text-xs font-black">ℹ</span>
                 </div>
                 <p className="text-blue-800 text-sm leading-relaxed font-medium">
@@ -1169,8 +1177,37 @@ const AvailabilityDashboard = ({ setSelectedPlace, setCurrentPage, setNavigation
     }
   };
 
-  const viewDetails = (place) => {
-    setSelectedPlace(place);
+  const viewDetails = async (place) => {
+    let updatedPlace = { ...place };
+    try {
+      const response = await fetch('http://localhost:8001/predict', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ location_name: place.name })
+      });
+      if (response.ok) {
+        const data = await response.json();
+        updatedPlace = {
+          ...updatedPlace,
+          availableSlots: data.available_slots,
+          occupiedSlots: data.occupied_slots,
+          percentage: data.availability_percentage,
+          status: data.status,
+          estimated_time: data.estimated_time,
+          totalSlots: data.total_slots,
+          slots: data.slots.map((s, i) => ({
+            id: `A${Math.floor(i / 20) + 1}-${(i % 20) + 1}`,
+            status: s.status,
+            nextAvailable: s.nextAvailable
+          }))
+        };
+      }
+    } catch (error) {
+      console.error('Error fetching prediction:', error);
+    }
+    setSelectedPlace(updatedPlace);
     setCurrentPage('location-details');
     setNavigationHistory([...navigationHistory, 'location-details']);
   };
