@@ -30,22 +30,17 @@ warnings.filterwarnings("ignore")
 # =====================================
 current_dir = os.path.dirname(os.path.abspath(__file__))
 birmingham_path = os.path.join(current_dir, "birmingham_parking.csv")
-spsir_path = os.path.join(current_dir, "SPSIRDATA.csv")
 
-if os.path.exists(birmingham_path):
-    print(f"Loading dense dataset: {birmingham_path}")
-    df = pd.read_csv(birmingham_path)
-    df["created_at"] = pd.to_datetime(df["created_at"])
-    if "Availability" not in df.columns:
-        df["OccupancyRate"] = df["Occupancy"] / df["Capacity"]
-        df["Availability"] = (df["OccupancyRate"] < 0.50).astype(int)
-    dataset_name = "UCI Birmingham Parking Dataset (35,705 records)"
-else:
-    print(f"Loading standard dataset: {spsir_path}")
-    df = pd.read_csv(spsir_path)
-    df["created_at"] = pd.to_datetime(df["created_at"])
-    df["Availability"] = np.where(df["field2"] == 0, 1, 0)
-    dataset_name = "SPSIR IoT Sensor Dataset (2,769 records)"
+if not os.path.exists(birmingham_path):
+    raise FileNotFoundError(f"Dataset not found at {birmingham_path}")
+
+print(f"Loading dataset: {birmingham_path}")
+df = pd.read_csv(birmingham_path)
+df["created_at"] = pd.to_datetime(df["created_at"])
+if "Availability" not in df.columns:
+    df["OccupancyRate"] = df["Occupancy"] / df["Capacity"]
+    df["Availability"] = (df["OccupancyRate"] < 0.50).astype(int)
+dataset_name = "UCI Birmingham Parking Dataset (35,705 records)"
 
 # =====================================
 # 2. Feature Engineering (Strict Zero Leakage)
