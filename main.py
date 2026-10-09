@@ -55,22 +55,19 @@ PARKING_LOCATIONS = {
         "city": "Delhi",
         "state": "Delhi",
         "type": "Mall",
-        "total_slots": 250,
-        "template_slots": ["IR20", "IR40", "IR60", "IR80"]
+        "total_slots": 250
     },
     "IGI Airport T3, Delhi": {
         "city": "Delhi",
         "state": "Delhi",
         "type": "Airport",
-        "total_slots": 800,
-        "template_slots": ["IR20", "IR40", "IR60", "IR80"]
+        "total_slots": 800
     },
     "India Gate, Delhi": {
         "city": "Delhi",
         "state": "Delhi",
         "type": "Tourist",
-        "total_slots": 150,
-        "template_slots": ["IR20", "IR40"]
+        "total_slots": 150
     },
 
     # Mumbai
@@ -78,22 +75,19 @@ PARKING_LOCATIONS = {
         "city": "Mumbai",
         "state": "Maharashtra",
         "type": "Mall",
-        "total_slots": 320,
-        "template_slots": ["IR20", "IR40", "IR60", "IR80"]
+        "total_slots": 320
     },
     "Chhatrapati Shivaji Airport": {
         "city": "Mumbai",
         "state": "Maharashtra",
         "type": "Airport",
-        "total_slots": 950,
-        "template_slots": ["IR20", "IR40", "IR60", "IR80"]
+        "total_slots": 950
     },
     "Gateway of India": {
         "city": "Mumbai",
         "state": "Maharashtra",
         "type": "Tourist",
-        "total_slots": 180,
-        "template_slots": ["IR20", "IR40"]
+        "total_slots": 180
     },
 
     # Bengaluru
@@ -101,22 +95,19 @@ PARKING_LOCATIONS = {
         "city": "Bengaluru",
         "state": "Karnataka",
         "type": "Mall",
-        "total_slots": 400,
-        "template_slots": ["IR20", "IR40", "IR60", "IR80"]
+        "total_slots": 400
     },
     "Kempegowda Airport": {
         "city": "Bengaluru",
         "state": "Karnataka",
         "type": "Airport",
-        "total_slots": 1200,
-        "template_slots": ["IR20", "IR40", "IR60", "IR80"]
+        "total_slots": 1200
     },
     "Lalbagh Botanical Garden": {
         "city": "Bengaluru",
         "state": "Karnataka",
         "type": "Tourist",
-        "total_slots": 220,
-        "template_slots": ["IR20", "IR40"]
+        "total_slots": 220
     },
 
     # Hyderabad
@@ -124,22 +115,19 @@ PARKING_LOCATIONS = {
         "city": "Hyderabad",
         "state": "Telangana",
         "type": "Mall",
-        "total_slots": 380,
-        "template_slots": ["IR20", "IR40", "IR60", "IR80"]
+        "total_slots": 380
     },
     "Rajiv Gandhi International Airport": {
         "city": "Hyderabad",
         "state": "Telangana",
         "type": "Airport",
-        "total_slots": 1100,
-        "template_slots": ["IR20", "IR40", "IR60", "IR80"]
+        "total_slots": 1100
     },
     "Charminar": {
         "city": "Hyderabad",
         "state": "Telangana",
         "type": "Tourist",
-        "total_slots": 200,
-        "template_slots": ["IR20", "IR40"]
+        "total_slots": 200
     },
 
     # Chennai
@@ -147,22 +135,19 @@ PARKING_LOCATIONS = {
         "city": "Chennai",
         "state": "Tamil Nadu",
         "type": "Mall",
-        "total_slots": 350,
-        "template_slots": ["IR20", "IR40", "IR60", "IR80"]
+        "total_slots": 350
     },
     "Chennai International Airport": {
         "city": "Chennai",
         "state": "Tamil Nadu",
         "type": "Airport",
-        "total_slots": 1000,
-        "template_slots": ["IR20", "IR40", "IR60", "IR80"]
+        "total_slots": 1000
     },
     "Marina Beach": {
         "city": "Chennai",
         "state": "Tamil Nadu",
         "type": "Tourist",
-        "total_slots": 250,
-        "template_slots": ["IR20", "IR40"]
+        "total_slots": 250
     },
 
     # Kolkata
@@ -170,22 +155,19 @@ PARKING_LOCATIONS = {
         "city": "Kolkata",
         "state": "West Bengal",
         "type": "Mall",
-        "total_slots": 340,
-        "template_slots": ["IR20", "IR40", "IR60", "IR80"]
+        "total_slots": 340
     },
     "Netaji Subhas Chandra Bose Airport": {
         "city": "Kolkata",
         "state": "West Bengal",
         "type": "Airport",
-        "total_slots": 900,
-        "template_slots": ["IR20", "IR40", "IR60", "IR80"]
+        "total_slots": 900
     },
     "Victoria Memorial": {
         "city": "Kolkata",
         "state": "West Bengal",
         "type": "Tourist",
-        "total_slots": 180,
-        "template_slots": ["IR20", "IR40"]
+        "total_slots": 180
     },
 
     # Pune
@@ -193,25 +175,41 @@ PARKING_LOCATIONS = {
         "city": "Pune",
         "state": "Maharashtra",
         "type": "Mall",
-        "total_slots": 360,
-        "template_slots": ["IR20", "IR40", "IR60", "IR80"]
+        "total_slots": 360
     },
     "Pune Airport": {
         "city": "Pune",
         "state": "Maharashtra",
         "type": "Airport",
-        "total_slots": 750,
-        "template_slots": ["IR20", "IR40", "IR60", "IR80"]
+        "total_slots": 750
     },
     "Shaniwar Wada": {
         "city": "Pune",
         "state": "Maharashtra",
         "type": "Tourist",
-        "total_slots": 160,
-        "template_slots": ["IR20", "IR40"]
+        "total_slots": 160
     }
 }
-SLOT_TEMPLATES = {"IR20":0,"IR40":1,"IR60":2,"IR80":3}
+# Template IDs map to distinct Birmingham car park subsets (0-29 range)
+# Mall venues   → profiles 4-7  (mid-range, moderate occupancy)
+# Airport venues → profiles 8-11 (high-volume, long stays)
+# Tourist venues → profiles 12-13 (short bursts, high turnover)
+SLOT_TEMPLATES = {
+    # Mall templates
+    "IR20": 4, "IR40": 5, "IR60": 6, "IR80": 7,
+    # Airport templates (separate namespace in UI)
+    "AIRPORT_A": 8, "AIRPORT_B": 9, "AIRPORT_C": 10, "AIRPORT_D": 11,
+    # Tourist templates
+    "TOURIST_A": 12, "TOURIST_B": 13,
+}
+
+# Venue-type → template slot names
+VENUE_TEMPLATES = {
+    "Mall":    ["IR20", "IR40", "IR60", "IR80"],
+    "Airport": ["AIRPORT_A", "AIRPORT_B", "AIRPORT_C", "AIRPORT_D"],
+    "Tourist": ["TOURIST_A", "TOURIST_B"],
+    "General": ["IR20", "IR40", "IR60", "IR80"],
+}
 
 # =====================================
 # Models
@@ -270,9 +268,9 @@ def predict_slot(slot_id, time_minutes, day):
     prob_available = model.predict_proba(df)[0][1]
     return 1 if random.random() < prob_available else 0
 def estimate_time(slot_id, time_minutes, day):
-    # Map tid (0, 1, 2, 3) to the actual categorical keys
-    key_map = {0: 13, 1: 30, 2: 33, 3: 35}
-    actual_key = key_map.get(slot_id, slot_id)
+    # slot_id already IS the Birmingham car park index (0-29), passed via SLOT_TEMPLATES
+    # Clamp to valid range as a safety net
+    actual_key = int(slot_id) % 30
     
     if duration_model is None:
         duration = 60
@@ -297,39 +295,86 @@ def estimate_time(slot_id, time_minutes, day):
     ).strftime("%I:%M %p")
 
 # =====================================
-# Core Logic
+# Core Logic (Vectorized Batch Prediction for Instant Speed)
 # =====================================
 def aggregate(location, time_features):
 
     total = location["total_slots"]
-    templates = location["template_slots"]
+    venue_type = location.get("type", "General")
 
-    per_template = total // len(templates)
-    available = 0
+    # Resolve templates dynamically from venue type
+    templates = VENUE_TEMPLATES.get(venue_type, VENUE_TEMPLATES["General"])
+    num_templates = len(templates)
+    per_template = total // num_templates
 
-    slots_data = []
+    day = time_features["day"]
+    base_tm = time_features["time_minutes"]
+    is_weekend = 1 if day >= 5 else 0
+
+    # Build template slot IDs array for all slots
+    slot_ids = []
     for t in templates:
         tid = SLOT_TEMPLATES[t]
+        slot_ids.extend([tid] * per_template)
+    
+    # Fill any remainder up to total using the first template
+    if len(slot_ids) < total:
+        slot_ids.extend([SLOT_TEMPLATES[templates[0]]] * (total - len(slot_ids)))
+    
+    slot_ids = np.array(slot_ids[:total], dtype=int)
 
-        for _ in range(per_template):
-            offset = random.randint(-10,10)
-            tm = max(0,min(1439,time_features["time_minutes"] + offset))
+    # Individual random time offsets per slot (-10 to +10 mins) for realism
+    offsets = np.random.randint(-10, 11, size=total)
+    time_minutes = np.clip(base_tm + offsets, 0, 1439)
 
-            is_avail = predict_slot(tid, tm, time_features["day"])
-            available += is_avail
-            
-            if is_avail == 0:
-                est_time_slot = estimate_time(tid, tm, time_features["day"])
-                slots_data.append(SlotData(status="occupied", nextAvailable=est_time_slot))
-            else:
-                slots_data.append(SlotData(status="available", nextAvailable=None))
+    # 1. High-speed Batch Prediction of Availability
+    if model is not None:
+        batch_df = pd.DataFrame({
+            "Time_Minutes": time_minutes,
+            "Day": [day] * total,
+            "Slot_ID": slot_ids,
+            "Prev_Status": [0] * total,
+            "Is_Weekend": [is_weekend] * total,
+            "Rolling_Availability": [0.5] * total
+        })
+        probs = model.predict_proba(batch_df)[:, 1]
+        availabilities = (np.random.rand(total) < probs).astype(int)
+    else:
+        availabilities = np.random.choice([0, 1], size=total)
 
-    while len(slots_data) < total:
-        slots_data.append(SlotData(status="available", nextAvailable=None))
-        available += 1
+    # 2. High-speed Batch Prediction of Durations for Occupied Slots
+    occupied_indices = np.where(availabilities == 0)[0]
+    next_avail_map = {}
 
+    now = datetime.now()
+    if len(occupied_indices) > 0:
+        if duration_model is not None:
+            dur_df = pd.DataFrame({
+                "Time_Minutes": time_minutes[occupied_indices],
+                "Day": [day] * len(occupied_indices),
+                "Slot_ID": slot_ids[occupied_indices] % 30,
+                "Is_Weekend": [is_weekend] * len(occupied_indices)
+            })
+            pred_durations = duration_model.predict(dur_df)
+            variances = np.random.randint(-15, 31, size=len(occupied_indices))
+            durations = np.maximum(1, pred_durations + variances)
+        else:
+            durations = [60] * len(occupied_indices)
+
+        for idx, dur in zip(occupied_indices, durations):
+            next_avail_map[idx] = (now + timedelta(minutes=int(dur))).strftime("%I:%M %p")
+
+    # Build slot objects for UI
+    slots_data = []
+    for i in range(total):
+        if availabilities[i] == 1:
+            slots_data.append(SlotData(status="available", nextAvailable=None))
+        else:
+            slots_data.append(SlotData(status="occupied", nextAvailable=next_avail_map.get(i)))
+
+    available = int(np.sum(availabilities))
     occupied = total - available
-    percent = (available/total)*100
+    percent = (available / total) * 100
 
     if percent >= 40:
         status = "Available"
@@ -338,7 +383,10 @@ def aggregate(location, time_features):
     else:
         status = "Full"
 
-    est_time = estimate_time(0, time_features["time_minutes"], time_features["day"])
+    # Overall estimated checkout time for summary header
+    primary_slot = SLOT_TEMPLATES[templates[0]] % 30
+    est_time = estimate_time(primary_slot, base_tm, day)
+
     return available, occupied, percent, status, est_time, slots_data
 
 # =====================================
@@ -364,8 +412,7 @@ def predict_api(req: ParkingRequest):
             "city": "Unknown",
             "state": "Unknown",
             "type": "General",
-            "total_slots": 200,
-            "template_slots": ["IR20", "IR40", "IR60", "IR80"]
+            "total_slots": 200
         }
 
     if req.hour is not None and req.day is not None:
